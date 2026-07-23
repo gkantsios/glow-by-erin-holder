@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow by Erin — Products</title>
+<style>
+  :root{
+    --black:#000;
+    --gold:#c9a24a;
+    --gold-light:#e3c576;
+    --grey:#8a8a8a;
+    --light:#f6f4f0;
+    --card:#ffffff;
+    --oos:#b33a3a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:#222;background:#fff;line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+
+  /* Announcement bar */
+  .announce{background:var(--black);color:var(--gold-light);text-align:center;
+    font-size:13px;letter-spacing:.5px;padding:9px 12px}
+
+  /* Header / logo */
+  header{background:var(--black);color:#fff;text-align:center;padding:26px 16px 24px}
+  header .logo-img{display:inline-block;width:150px;max-width:80%;height:auto}
+  header .logo{font-size:32px;letter-spacing:4px;color:var(--gold);
+    font-weight:400;font-family:Georgia,'Times New Roman',serif}
+  header .logo span{display:block;font-size:12px;letter-spacing:6px;color:#fff;margin-top:5px}
+
+  /* Tabs */
+  .tabs{display:flex;justify-content:center;gap:0;background:#0d0d0d;border-top:1px solid #222}
+  .tabs button{background:transparent;border:none;color:#cfcfcf;cursor:pointer;
+    font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:16px 34px;
+    border-bottom:3px solid transparent;transition:.2s;font-family:inherit}
+  .tabs button:hover{color:#fff}
+  .tabs button.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* Collection title */
+  .collection-head{text-align:center;padding:32px 16px 4px}
+  .collection-head h1{font-family:Georgia,serif;font-weight:400;font-size:30px;
+    letter-spacing:2px;color:#111}
+  .collection-head p{color:var(--grey);font-size:13px;margin-top:8px;letter-spacing:.5px}
+  .collection-head .rule{width:60px;height:2px;background:var(--gold);margin:14px auto 0}
+
+  /* Grid */
+  .grid{max-width:1200px;margin:26px auto 60px;padding:0 20px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:26px 22px}
+  @media(max-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:420px){.grid{grid-template-columns:1fr}}
+
+  .card{position:relative;text-align:center;display:flex;flex-direction:column}
+  .card .imgwrap{position:relative;background:var(--light);border-radius:4px;
+    overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .card:hover .imgwrap img{transform:scale(1.05)}
+  .card .oos{position:absolute;top:10px;right:10px;background:var(--oos);color:#fff;
+    font-size:10px;line-height:1.2;letter-spacing:.5px;text-transform:uppercase;
+    padding:5px 8px;border-radius:3px;text-align:center;font-weight:600}
+  .card .title{margin-top:14px;font-size:14px;color:#222;min-height:38px;
+    display:flex;align-items:center;justify-content:center;padding:0 4px}
+  .card .vendor{margin-top:6px;font-size:11px;color:var(--grey);
+    text-transform:uppercase;letter-spacing:1px}
+  .card .price{margin-top:8px;font-size:15px;color:var(--gold);font-weight:600;letter-spacing:.5px}
+  .card .email{margin-top:8px;font-size:12px;color:#555;letter-spacing:.3px}
+  .card .email a{color:var(--gold);text-decoration:underline}
+
+  /* Footer */
+  footer{background:var(--black);color:#cfcfcf;margin-top:20px;padding:46px 20px 30px}
+  .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  @media(max-width:760px){.footer-inner{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.footer-inner{grid-template-columns:1fr}}
+  footer h3{color:var(--gold);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+  footer p,footer li{font-size:13px;line-height:1.9;color:#bcbcbc;list-style:none}
+  footer a:hover{color:var(--gold)}
+  .footer-bottom{text-align:center;color:#777;font-size:12px;margin-top:36px;border-top:1px solid #222;padding-top:20px}
+
+  .note{max-width:1100px;margin:26px auto 0;padding:14px 20px;background:#fbf7ee;
+    border:1px solid #eadfc2;border-radius:6px;font-size:13px;color:#6b5a2e}
+  .note b{color:#4a3d1c}
+</style>
+</head>
+<body>
+
+<div class="announce">FREE SHIPPING on any order over $200 (US only)</div>
+
+<header>
+  <img class="logo-img" src="glow-logo.avif" alt="Glow by Erin"
+       onerror="this.style.display='none';document.getElementById('logoText').style.display='block';">
+  <div class="logo" id="logoText" style="display:none">Glow by Erin<span>SUPPLY</span></div>
+</header>
+
+<div class="tabs">
+  <button class="active" data-tab="wholesale">Wholesale</button>
+  <button data-tab="retail">Retail</button>
+</div>
+
+<div class="collection-head">
+  <h1 id="collTitle">Wholesale</h1>
+  <p id="collSub">All Glow by Erin products</p>
+  <div class="rule"></div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3>Glow By Erin</h3>
+      <p>Glow By Erin Finishing Powder is a full body application in a powder form used to complete your spray tan application process. Applied immediately after a spray tan, the client can get dressed feeling completely dry and looking amazing.</p>
+    </div>
+    <div>
+      <h3>Headquarters</h3>
+      <p><b style="color:#ddd">GLOW BY ERIN</b><br>Tulsa, Oklahoma<br>(918) 991-4569<br>Hours: 9:00 a.m. – 5:00 p.m. (CT)</p>
+    </div>
+    <div>
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#" data-tab="wholesale">Wholesale</a></li>
+        <li><a href="#" data-tab="retail">Retail</a></li>
+        <li><a href="mailto:info@glowbyerin.com">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Subscribe</h3>
+      <p>Sign up to our mailing list</p>
+      <p><a href="#">Facebook</a> &nbsp;·&nbsp; <a href="#">Instagram</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">© Glow by Erin — recreated layout</div>
+</footer>
+
+<script>
+/* ============================================================
+   PRODUCT LISTS — edit the "price" for each item, or click a
+   price on the page to type it in. Powder pricing by size:
+   Sample $10 · 6 oz $39 · 1 lb $79 · 2 lb $139.
+   Bars use {email:true} to show the info@glowbyerin.com link.
+   ============================================================ */
+const WHOLESALE = [
+  {title:'Starter Essential Membership Collective Subscription Box', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/295E9F59-2FF0-4EA1-B64D-A0DFDE39C0CF_grande.jpg?v=1771775630'},
+  {title:'VIP Access Membership Collective Subscription Box', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/FullSizeRender_c75b0e3d-fa96-4106-920d-8afd54cfc7e2_grande.jpg?v=1771775534'},
+  {title:'Black Label Pro Membership Collective Subscription Box', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/5A936985-D7C8-46A9-9C04-80E6619C895E_grande.jpg?v=1771775892'},
+  {title:'NOIR Detox Polish', vendor:'Glow by Erin', price:'$19.75', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/FullSizeRender_27f51dc7-0781-4d42-b0f7-e6d582f65231_grande.jpg?v=1773974887'},
+  {title:'Luxury Sunless Solution - Velvet Glow - SAMPLE SIZE (4 oz)', vendor:'Glow by Erin', price:'$13.50', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/C85A30AD-A045-43E1-A5DF-094DDCC51541_grande.jpg?v=1771872657'},
+  {title:'Luxury Sunless Solution - Velvet Glow - 32 oz', vendor:'Glow by Erin', price:'$89.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/FA7F46E1-A4FC-4B1D-850D-47821A8AB19C_grande.jpg?v=1768142496'},
+  {title:'Sunless Bronzing Mousse - 6.7 OZ.', vendor:'Glow by Erin', price:'$19.50', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/IMG-4788_grande.jpg?v=1713292442'},
+  {title:'Sunless Tanning Mitt (Reusable)', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/C98DE04C-4479-4BB7-A65B-BA842E0F0F53_grande.jpg?v=1713440234'},
+  {title:'Retail Jars - 1.5 oz. - Shimmer Powders - 6 Scents (Sold in 3-Packs)', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/RetailShimmerJars_grande.jpg?v=1668452816'},
+  {title:'Retail Jars - 1.5 oz. - Matte Powders - 3 Scents (Sold in 3-Packs)', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MattePowderJars_grande.jpg?v=1668453498'},
+  {title:'GBE Full-Body Application Brush', vendor:'Brush', price:'$18.95', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_8261_1_grande.jpg?v=1623765182'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Original Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooOriginalBar3pak_grande.jpg?v=1660188030'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Cucumber Melon Scent', vendor:'Glow by Erin', email:true, oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooCuc.Melon3pk_grande.jpg?v=1660187788'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Tropical Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooTropical3pak_grande.jpg?v=1660188203'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bars - Combo Pack', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooCombo3pak_grande.jpg?v=1660188619'},
+  {title:'The Charcoal Detox Bar', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/NewCharcoalBar3pic_grande.jpg?v=1636131241'},
+  {title:'Mini Charcoal Bar', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_5973_grande.jpg?v=1662081720'},
+  {title:'Exfoliating & Tan Removing Mitt', vendor:'Glow by Erin', price:'$7.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/SingleMittforWeb_grande.jpg?v=1618191761'},
+  {title:'Mini 3-N-1 Shampoo Bar - Original Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniOriginalBarOriginalMain_grande.jpg?v=1662091757'},
+  {title:'Mini 3-N-1 Shampoo Bar - Cucumber Melon Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniCuc.MelonBarMain_grande.jpg?v=1662092335'},
+  {title:'Mini 3-N-1 Shampoo Bar - Tropical Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniTropicalBarMain_grande.jpg?v=1662091994'},
+  {title:'Bar Saver Pad - Gray, White and Brown', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/3ColorBarSaverPadWeb_grande.jpg?v=1632679815'},
+  {title:'GBE Powder Bowl - Single or 3 Pack', vendor:'Glow by Erin', price:'$4.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/1_bowls_1_grande.jpg?v=1607205275'},
+  {title:'GBE "Rinse-Free" Brush Cleaner', vendor:'Glow by Erin', price:'$9.50', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Brush-Cleaner---Hand-Spraying-with-Brush_017cb0a6-087c-4bdb-93b3-7a6545d16107_grande.jpg?v=1627508128'},
+  {title:'Signature Original Scent Hand Sanitizer', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_2606_02db7aae-d879-4a2b-bd10-b3d3c862f43a_grande.jpg?v=1599629779'},
+  {title:'Glow By Erin Retail Jar (Pack of 3) - 1.5 oz. each - Holiday Powder - Two Scents', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/HolidayRetailJars_grande.jpg?v=1668454488'},
+  {title:'LUXE SHIMMER - MOBILE 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/files/D7FE44CD-5200-4AED-A298-9AE487187584_grande.jpg?v=1771640552'},
+  {title:'LUXE SHIMMER - SALON 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/files/D7FE44CD-5200-4AED-A298-9AE487187584_grande.jpg?v=1771640552'},
+  {title:'LUXE SHIMMER - BULK 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/D7FE44CD-5200-4AED-A298-9AE487187584_grande.jpg?v=1771640552'},
+  {title:'Ribbon Candy - Mobile 6 OZ (SEASONAL)', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_9033web_grande.jpg?v=1667967603'},
+  {title:'Original Scent Shimmer - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/MobileOrig.Bag-Props_grande.jpg?v=1671033714'},
+  {title:'Original Scent Shimmer - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/original_1lbs_copy_grande.jpg?v=1573596645'},
+  {title:'Original Scent Shimmer - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/original_2lbs_copy_grande.jpg?v=1573596684'},
+  {title:'Tropical Scent Shimmer - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/MobileTrop.Bag-Props_grande.jpg?v=1671033789'},
+  {title:'Tropical Scent Shimmer - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/tropical_1lbs_grande.jpg?v=1545954806'},
+  {title:'Tropical Scent Shimmer - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/tropical_2lbs_grande.jpg?v=1545954723'},
+  {title:'Sweet Sangria Shimmer - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/SweetSangriaMobilewithStemless_grande.jpg?v=1667966690'},
+  {title:'Sweet Sangria Shimmer - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/GLOWBYERIN-SWEETSANGRIA-SALONSIZE1LB_grande.jpg?v=1667968033'},
+  {title:'Sweet Sangria Shimmer - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/GLOWBYERIN-SWEETSANGRIA-BULKSIZE2LB_grande.jpg?v=1667967118'},
+  {title:'Amber Vanilla Shimmer - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/AmberVanillaMobileProps_grande.jpg?v=1667967907'},
+  {title:'Amber Vanilla Shimmer - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Amber_Vanilla_1lbs_copy_1024x1024_49c483fd-9304-412c-8fd3-bea5abd254d6_grande.jpg?v=1632754583'},
+  {title:'Amber Vanilla Shimmer - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Amber_Vanilla_2lbs_copy_1024x1024_e86b18cd-216a-4a10-8d07-1c64b9e31454_grande.jpg?v=1632754548'},
+  {title:'Summer Bronze Shimmer - Sunkissed Medium Shade - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/MobileSBBag-Props_grande.jpg?v=1671033847'},
+  {title:'Summer Bronze Shimmer - Sunkissed Medium Shade - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Summer_Bronze_1lbs_grande.jpg?v=1552935969'},
+  {title:'Summer Bronze Shimmer - Sunkissed Medium Shade - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Summer_Bronze_2lbs_grande.jpg?v=1552935985'},
+  {title:'Matte Original Scent (No Shimmer) - Mobile 6 oz.', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/matte_sample_2d15af3a-f5a2-40e6-a4c9-2c48dcbee44c_grande.jpg?v=1545954866'},
+  {title:'Matte Original Scent (No Shimmer) Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/matte_1lbs_grande.jpg?v=1545953207'},
+  {title:'Matte Original Scent (No Shimmer) Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/matte_2lbs_grande.jpg?v=1545953176'},
+  {title:'Riviera Scent Matte (No shimmer) - Mobile 6 oz.', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Riviera_6oz_grande.jpg?v=1553026983'},
+  {title:'Riviera Scent Matte (No shimmer) - Salon 1 LB', vendor:'Salon Size', price:'$79.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Riviera_1lbs_grande.jpg?v=1553026998'},
+  {title:'Riviera Scent Matte (No shimmer) - Bulk 2 LB', vendor:'Bulk Size', price:'$139.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Riviera_2lbs_grande.jpg?v=1553026963'},
+  {title:'Dark Matte - Tropical Scent (No Shimmer) - Mobile 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Dark_6oz_grande.jpg?v=1553112375'},
+  {title:'Naked Shimmer - (Fragrance Free) - Mobile Size 6 OZ', vendor:'Mobile Size', price:'$39.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/naked_6oz_1024x1024_copy_1024x1024_copy_grande.jpg?v=1570645583'},
+  {title:'Ribbon Candy - Sample (SEASONAL)', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Ribbon_Candy_Sample_grande.jpg?v=1573098728'},
+  {title:'Original Scent Shimmer - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/sample_bag_regular_copy_grande.jpg?v=1573596610'},
+  {title:'Sweet Sangria Shimmer - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/GLOWBYERIN-SWEETSANGRIA-SAMPLE_grande.jpg?v=1662477609'},
+  {title:'Tropical Scent Shimmer - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Tropical_Sample_44de4846-d926-4338-94b1-842d7d998960_grande.jpg?v=1553027258'},
+  {title:'Amber Vanilla Shimmer - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/sample_bag_Amber_Vanilla_1024x1024_1024x1024_adf175ba-4283-4894-859d-53baf1146a1b_grande.jpg?v=1632756401'},
+  {title:'Summer Bronze Shimmer - Sunkissed Medium Shade - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Summer_Bronze_Sample_grande.jpg?v=1552936012'},
+  {title:'LUXE shimmer powder (sample)', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/D7FE44CD-5200-4AED-A298-9AE487187584_grande.jpg?v=1771640552'},
+  {title:'Matte Original Scent (No Shimmer) Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/sample_bag_matte_1024x1024_f9559c66-edf4-4cdb-9c80-047afe22b89a_grande.jpg?v=1546637398'},
+  {title:'Riviera Scent Matte (No shimmer) - Sample', vendor:'Sample', price:'$10.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/sample_bag_riviera_1024x1024_5b2f3031-35dc-4726-b1dd-d4b797ffe84e_grande.jpg?v=1547703009'},
+  {title:'Dark Matte - Tropical Scent (No Shimmer) Sample', vendor:'Sample', price:'$10.00', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/Dark_Sample_grande.jpg?v=1553112404'},
+  {title:'VELVET GLOW - Gallon', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/333EADF5-6F5E-4251-9FC6-7A8D0DD2A8C9_grande.jpg?v=1774293964'},
+];
+
+const RETAIL = [
+  {title:'Retail Jars - 1.5 oz. - Shimmer Powders - 6 Scents (Sold in 3-Packs)', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/RetailShimmerJars_grande.jpg?v=1668452816'},
+  {title:'Retail Jars - 1.5 oz. - Matte Powders - 3 Scents (Sold in 3-Packs)', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MattePowderJars_grande.jpg?v=1668453498'},
+  {title:'Glow By Erin Retail Jar (Pack of 3) - 1.5 oz. each - Holiday Powder - Two Scents', vendor:'Glow by Erin', price:'$25.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/HolidayRetailJars_grande.jpg?v=1668454488'},
+  {title:'GBE Full-Body Application Brush', vendor:'Brush', price:'$18.95', oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_8261_1_grande.jpg?v=1623765182'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Original Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooOriginalBar3pak_grande.jpg?v=1660188030'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Cucumber Melon Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooCuc.Melon3pk_grande.jpg?v=1660187788'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bar - Tropical Scent', vendor:'Glow by Erin', email:true, oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooTropical3pak_grande.jpg?v=1660188203'},
+  {title:'3-IN-1 "Soap Free" Shampoo Bars - Combo Pack', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/ShampooCombo3pak_grande.jpg?v=1660188619'},
+  {title:'The Charcoal Detox Bar', vendor:'Glow by Erin', email:true, oos:true, img:'https://glowbyerinsupply.com/cdn/shop/products/NewCharcoalBar3pic_grande.jpg?v=1636131241'},
+  {title:'Mini 3-N-1 Shampoo Bar - Original Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniOriginalBarOriginalMain_grande.jpg?v=1662091757'},
+  {title:'Mini 3-N-1 Shampoo Bar - Cucumber Melon Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniCuc.MelonBarMain_grande.jpg?v=1662092335'},
+  {title:'Mini 3-N-1 Shampoo Bar - Tropical Scent', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/MiniTropicalBarMain_grande.jpg?v=1662091994'},
+  {title:'Mini Charcoal Bar', vendor:'Glow by Erin', email:true, oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_5973_grande.jpg?v=1662081720'},
+  {title:'Exfoliating & Tan Removing Mitt', vendor:'Glow by Erin', price:'$7.00', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/SingleMittforWeb_grande.jpg?v=1618191761'},
+  {title:'Bar Saver Pad - Gray, White and Brown', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/3ColorBarSaverPadWeb_grande.jpg?v=1632679815'},
+  {title:'GBE "Rinse-Free" Brush Cleaner', vendor:'Glow by Erin', price:'$9.50', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/Brush-Cleaner---Hand-Spraying-with-Brush_017cb0a6-087c-4bdb-93b3-7a6545d16107_grande.jpg?v=1627508128'},
+  {title:'Signature Original Scent Hand Sanitizer', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/products/DSC_2606_02db7aae-d879-4a2b-bd10-b3d3c862f43a_grande.jpg?v=1599629779'},
+  {title:'Starter Essential Membership Collective Subscription Box', vendor:'Glow by Erin', price:'', oos:false, img:'https://glowbyerinsupply.com/cdn/shop/files/295E9F59-2FF0-4EA1-B64D-A0DFDE39C0CF_grande.jpg?v=1771775630'},
+];
+
+const COLLECTIONS = {
+  wholesale:{title:'Wholesale', sub:'All Glow by Erin products', data:WHOLESALE},
+  retail:{title:'Retail', sub:'Retail products', data:RETAIL},
+};
+
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const grid = document.getElementById('grid');
+
+function priceBlock(p){
+  if(p.email){
+    return `<div class="email">Email for pricing<br><a href="mailto:info@glowbyerin.com">info@glowbyerin.com</a></div>`;
+  }
+  return `<div class="price">${p.price ? esc(p.price) : '$___'}</div>`;
+}
+
+function render(key){
+  const c = COLLECTIONS[key];
+  document.getElementById('collTitle').textContent = c.title;
+  document.getElementById('collSub').textContent = c.sub;
+  grid.innerHTML = c.data.map(p => `
+    <div class="card">
+      <div class="imgwrap">
+        <img src="${p.img}" alt="${esc(p.title)}" loading="lazy">
+        ${p.oos ? '<div class="oos">Out of<br>Stock</div>' : ''}
+      </div>
+      <div class="title">${esc(p.title)}</div>
+      <div class="vendor">${esc(p.vendor)}</div>
+      ${priceBlock(p)}
+    </div>`).join('');
+}
+
+function selectTab(key){
+  document.querySelectorAll('.tabs button').forEach(b =>
+    b.classList.toggle('active', b.dataset.tab === key));
+  render(key);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('[data-tab]').forEach(el =>
+  el.addEventListener('click', e => { e.preventDefault(); selectTab(el.dataset.tab); }));
+
+render('wholesale');
+</script>
+</body>
+</html>
